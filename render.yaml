@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: emotion-ai-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: TF_USE_LEGACY_KERAS
+        value: "1"
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    healthCheckPath: /health
+    
+  - type: web
+    name: emotion-ai-frontend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "streamlit run frontend/streamlit_app.py --server.port $PORT --server.address 0.0.0.0"
+    envVars:
+      - key: API_URL
+        value: https://emotion-ai-backend.onrender.com

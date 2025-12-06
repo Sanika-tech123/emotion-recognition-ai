@@ -1,0 +1,28 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+
+# Model cache
+models/
+*.h5
+*.pkl
+
+# Temp files
+temp_*.wav
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
