@@ -1,11 +1,11 @@
 ﻿# Python
-__pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
 env/
 venv/
+**/__pycache__/
 
 # Model cache
 models/
