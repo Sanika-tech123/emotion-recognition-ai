@@ -16,6 +16,10 @@
 ![Voice Analysis](screenshots/voice-analysis.png)
 *Speech emotion recognition with interactive radar chart*
 
+### Emotion Visualization
+![Radar Chart](screenshots/radar-chart.png)
+*Interactive radar chart showing emotion distribution*
+
 ---
 
 ## Overview
