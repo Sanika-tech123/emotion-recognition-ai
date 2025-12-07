@@ -398,21 +398,23 @@ with tab2:
                 except Exception as e:
                     st.error(f"⚠️ Connection Error: {e}")
     
+    
     # Display Results
     if st.session_state.audio_result:
         data = st.session_state.audio_result
         emotion = data["emotion"]
         confidence = data["confidence"]
-        all_scores = data["all_scores"]
+        probs = data.get("all_scores", {})
         
-        # Auto Neutral suppression
-        if emotion.lower() == 'neutral':
-            neutral_score = all_scores.get('Neutral', 1.0)
-            if neutral_score < 0.95:
-                all_scores['Neutral'] = neutral_score * 0.5
-                emotion = max(all_scores, key=all_scores.get)
-                confidence = all_scores[emotion]
-
+        # More aggressive neutral suppression
+        if "Neutral" in probs and probs["Neutral"] < 0.95:
+            # If neutral confidence is <95%, reduce it by 70% (was 50%)
+            probs["Neutral"] = probs["Neutral"] * 0.3
+            # Recalculate top emotion after suppression
+            if probs:
+                emotion = max(probs, key=probs.get)
+                confidence = probs[emotion]
+        
         st.markdown("---")
         res_col1, res_col2 = st.columns([1, 1])
         
@@ -430,7 +432,7 @@ with tab2:
             st.progress(confidence)
             
         with res_col2:
-            st.plotly_chart(plot_radar_chart(all_scores, "Voice Emotion Profile"), use_container_width=True)
+            st.plotly_chart(plot_radar_chart(probs, "Voice Emotion Profile"), use_container_width=True)
             
         if st.button("🔄 Clear Results", key="clear_results"):
             st.session_state.audio_result = None

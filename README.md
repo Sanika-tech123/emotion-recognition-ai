@@ -133,6 +133,24 @@ Upload `.wav` file or record directly in the UI. The system automatically:
 - Implement ensemble methods for higher accuracy
 - Add real-time streaming audio analysis
 - Support more audio formats (mp3, m4a, etc.)
-
+cd C:\Users\Shree\Desktop\project2\backend
+$env:TF_USE_LEGACY_KERAS=1; uvicorn main:app --host 0.0.0.0 --port 8000
 ## License
 This project uses pre-trained models from HuggingFace under their respective licenses.
+
+## How to Run test_accuracy.py
+
+
+Application startup complete
+Uvicorn running on http://0.0.0.0:8000
+
+# Navigate to project
+cd C:\Users\Shree\Desktop\project2
+python test_accuracy.py
+
+
+# Navigate to project root
+cd C:\Users\Shree\Desktop\project2
+
+# Start Streamlit
+streamlit run frontend/streamlit_app.py
