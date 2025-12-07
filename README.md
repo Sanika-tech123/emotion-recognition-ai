@@ -1,5 +1,23 @@
 # AI-Powered Real-Time Speech & Text Emotion Recognition System
 
+> Advanced multimodal emotion detection using state-of-the-art transformer models
+
+## 📸 Screenshots
+
+### Main Interface
+![Main UI](screenshots/main-ui.png)
+*Beautiful gradient UI with glassmorphism design*
+
+### Text Emotion Analysis
+![Text Analysis](screenshots/text-analysis.png)
+*Real-time text emotion detection with confidence scores*
+
+### Voice Emotion Analysis
+![Voice Analysis](screenshots/voice-analysis.png)
+*Speech emotion recognition with interactive radar chart*
+
+---
+
 ## Overview
 This project is a full-stack AI application that detects emotions from:
 - **Text**: Using RoBERTa (Go Emotions) - 28 emotion categories
